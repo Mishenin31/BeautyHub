@@ -1,0 +1,49 @@
+<UserControl x:Class="BeautyHub.Views.MyAppointmentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="HeaderText" Text="Мои записи" Style="{StaticResource Header}"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{StaticResource CardBrush}" CornerRadius="10" Padding="4" Margin="0,0,16,0">
+                <DataGrid x:Name="Grid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding DateDisplay}" Width="100"/>
+                        <DataGridTextColumn Header="Время" Binding="{Binding TimeSlot}" Width="80"/>
+                        <DataGridTextColumn Header="Услуга" Binding="{Binding ServiceName}" Width="*"/>
+                        <DataGridTextColumn Header="Мастер" Binding="{Binding MasterName}" Width="*"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding Price, StringFormat={}{0:N0} ₽}" Width="90"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+
+            <Border Grid.Column="1" Background="{StaticResource CardBrush}" CornerRadius="10" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Записаться" FontSize="18" FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBrush}" Margin="0,0,0,8"/>
+                    <TextBlock Text="Услуга" Style="{StaticResource Label}"/>
+                    <ComboBox x:Name="ServiceBox" DisplayMemberPath="Display"/>
+                    <TextBlock Text="Мастер" Style="{StaticResource Label}"/>
+                    <ComboBox x:Name="MasterBox"/>
+                    <TextBlock Text="Дата" Style="{StaticResource Label}"/>
+                    <DatePicker x:Name="DateBox"/>
+                    <TextBlock Text="Время" Style="{StaticResource Label}"/>
+                    <ComboBox x:Name="TimeBox"/>
+                    <Button Content="Записаться" Margin="0,20,0,0" Click="Book_Click"/>
+                    <Button Content="Отменить выбранную" Background="#9E9E9E" Click="Cancel_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

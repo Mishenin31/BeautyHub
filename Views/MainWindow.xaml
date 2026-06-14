@@ -1,0 +1,42 @@
+<Window x:Class="BeautyHub.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Beauty Hub — Салон красоты" Height="720" Width="1180"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Боковое меню -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
+            <DockPanel>
+                <!-- Шапка -->
+                <StackPanel DockPanel.Dock="Top" Margin="20,28,20,20">
+                    <TextBlock Text="✦ Beauty Hub" FontSize="22" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="Салон красоты" FontSize="13" Foreground="#F8BBD0" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <!-- Низ: пользователь + выход -->
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,16">
+                    <Border Background="#9C2C66" Padding="20,12" Margin="0,8">
+                        <StackPanel>
+                            <TextBlock x:Name="UserNameText" Foreground="White" FontWeight="SemiBold" FontSize="14" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock x:Name="UserRoleText" Foreground="#F8BBD0" FontSize="12" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Button Content="Выйти" Style="{StaticResource NavButton}" Click="Logout_Click"/>
+                </StackPanel>
+
+                <!-- Навигация (заполняется по роли) -->
+                <StackPanel x:Name="NavPanel" DockPanel.Dock="Top"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Контент -->
+        <ContentControl Grid.Column="1" x:Name="MainContent" Margin="24"/>
+    </Grid>
+</Window>

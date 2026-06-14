@@ -1,0 +1,76 @@
+<Window x:Class="BeautyHub.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Beauty Hub — Вход" Height="620" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="440"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левый баннер -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryBrush}">
+            <StackPanel VerticalAlignment="Center" Margin="40">
+                <TextBlock Text="✦ Beauty Hub" FontSize="38" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="Салон красоты" FontSize="18" Foreground="#F8BBD0" Margin="0,8,0,30"/>
+                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="14" LineHeight="22"
+                           Text="Система управления записями, услугами и клиентами. Войдите в систему или зарегистрируйтесь как новый клиент."/>
+
+                <Border Background="#9C2C66" CornerRadius="8" Padding="16" Margin="0,30,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Тестовые учётные записи:" Foreground="White" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <TextBlock Text="admin / admin — администратор" Foreground="#F8BBD0" FontSize="13"/>
+                        <TextBlock Text="employee / employee — сотрудник" Foreground="#F8BBD0" FontSize="13"/>
+                        <TextBlock Text="user / user — пользователь" Foreground="#F8BBD0" FontSize="13"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Правая панель с вкладками -->
+        <Border Grid.Column="1" Background="{StaticResource CardBrush}" Padding="40">
+            <StackPanel VerticalAlignment="Center">
+
+                <!-- Переключатель -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,24">
+                    <Button x:Name="TabLoginBtn" Content="Вход" Click="ShowLogin_Click"
+                            Background="{StaticResource PrimaryBrush}" Padding="24,8"/>
+                    <Button x:Name="TabRegisterBtn" Content="Регистрация" Click="ShowRegister_Click"
+                            Background="#BBBBBB" Padding="24,8"/>
+                </StackPanel>
+
+                <!-- ФОРМА ВХОДА -->
+                <StackPanel x:Name="LoginPanel">
+                    <TextBlock Text="Вход в систему" FontSize="22" FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBrush}" Margin="0,0,0,12"/>
+                    <TextBlock Text="Логин" Style="{StaticResource Label}"/>
+                    <TextBox x:Name="LoginName"/>
+                    <TextBlock Text="Пароль" Style="{StaticResource Label}"/>
+                    <PasswordBox x:Name="LoginPassword"/>
+                    <Button Content="Войти" Margin="0,24,0,0" Click="Login_Click"/>
+                </StackPanel>
+
+                <!-- ФОРМА РЕГИСТРАЦИИ -->
+                <StackPanel x:Name="RegisterPanel" Visibility="Collapsed">
+                    <TextBlock Text="Регистрация клиента" FontSize="22" FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBrush}" Margin="0,0,0,12"/>
+                    <TextBlock Text="ФИО" Style="{StaticResource Label}"/>
+                    <TextBox x:Name="RegName"/>
+                    <TextBlock Text="Телефон" Style="{StaticResource Label}"/>
+                    <TextBox x:Name="RegPhone"/>
+                    <TextBlock Text="Логин" Style="{StaticResource Label}"/>
+                    <TextBox x:Name="RegLogin"/>
+                    <TextBlock Text="Пароль" Style="{StaticResource Label}"/>
+                    <PasswordBox x:Name="RegPassword"/>
+                    <TextBlock Text="Повторите пароль" Style="{StaticResource Label}"/>
+                    <PasswordBox x:Name="RegPassword2"/>
+                    <Button Content="Зарегистрироваться" Margin="0,24,0,0" Click="Register_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
